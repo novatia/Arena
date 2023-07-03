@@ -2,6 +2,8 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 
+
+[ExecuteInEditMode]
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
 [RequireComponent(typeof(NavMeshAgent))]
@@ -12,7 +14,7 @@ public class IArenaPlayer : MonoBehaviour, IArenaInterface
     private NavMeshAgent m_NavMeshAgent;
 
     [Range(1,100)]
-    public int MaxHealth;
+    public int MaxHealth=100;
     private int m_CurrentHealth;
 
     private bool m_Blocking;
@@ -33,6 +35,10 @@ public class IArenaPlayer : MonoBehaviour, IArenaInterface
     private float m_AttackTimer = 0.0f;
 
     private bool m_IsDead = false;
+
+
+    public Transform HealthBar;
+
 
     void Awake()
     {
@@ -61,6 +67,14 @@ public class IArenaPlayer : MonoBehaviour, IArenaInterface
             }
         }
 
+        UpdateHealthbarRotation();
+    }
+
+    private void UpdateHealthbar() 
+    {
+        Vector3 local_scale = HealthBar.localScale;
+        local_scale.x = local_scale.x * m_CurrentHealth / MaxHealth;
+        HealthBar.localScale = local_scale;
     }
 
     /// <summary>
@@ -78,12 +92,21 @@ public class IArenaPlayer : MonoBehaviour, IArenaInterface
                 m_CurrentHealth -= Mathf.RoundToInt(AttackDamage / 2.0f);
             else
                 m_CurrentHealth -= Mathf.RoundToInt(AttackDamage);
-        }
 
+        }
+        
         if (m_CurrentHealth <= 0)
         {
             Dead();
+            m_CurrentHealth = 0;
         }
+
+        UpdateHealthbar();
+    }
+
+    private void UpdateHealthbarRotation()
+    {
+        HealthBar.transform.LookAt(Camera.main.transform);
     }
 
     private void Dead()
@@ -96,6 +119,7 @@ public class IArenaPlayer : MonoBehaviour, IArenaInterface
     {
         if (!m_IsAttacking)
             m_Blocking = true;
+
         return m_Blocking;
     }
 
@@ -110,9 +134,15 @@ public class IArenaPlayer : MonoBehaviour, IArenaInterface
     {
         if (!m_IsAttacking)
         {
-            m_IsAttacking = true;
-            target.TakeDamage(target);
-            return true;
+            Vector3 directionToTarget = transform.position - target.GetTransform().position;
+            float angle = Vector3.Angle(transform.forward, directionToTarget);
+
+            if (Mathf.Abs(angle) < 90)
+            {
+                m_IsAttacking = true;
+                target.TakeDamage(target);
+                return true;
+            }
         }
 
         return false;
