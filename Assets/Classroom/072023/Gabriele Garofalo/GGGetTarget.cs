@@ -25,11 +25,14 @@ namespace MBTExample
             Debug.Log("get target");
             //Debug.Log(m_myself.Data.TargetPosition);
 
+            m_myself.Block();
+
             if (m_myself.transform.position != m_myself.Data.TargetPosition)
             {
                 Vector2 randomPosition = Random.insideUnitCircle * 40f;
                 m_myself.Data.TargetPosition = new Vector3(500f, 0f, 500f) + new Vector3(randomPosition.x, 0f, randomPosition.y);
             }
+
 
             //Debug.Log(m_myself.Data.TargetPosition);
 

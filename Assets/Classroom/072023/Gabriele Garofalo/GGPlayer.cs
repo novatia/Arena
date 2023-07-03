@@ -11,6 +11,16 @@ public class GGPlayer : IArenaPlayer
     {
         Data = new();
         Data.NavMesh = GetComponent<NavMeshAgent>();
+        SetName("Gabevlogd");
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.TryGetComponent(out IArenaInterface enemy))
+        {
+            Data.TargetEnemy = enemy;
+            Block();
+        }
     }
 }
 
@@ -18,4 +28,5 @@ public struct Data
 {
     public Vector3 TargetPosition;
     public NavMeshAgent NavMesh;
+    public IArenaInterface TargetEnemy;
 }

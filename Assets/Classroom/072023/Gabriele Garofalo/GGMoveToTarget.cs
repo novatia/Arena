@@ -28,12 +28,15 @@ namespace MBTExample
 
             if (!requestResult) return NodeResult.failure;
 
-            if (Vector3.Distance(m_myself.transform.position, m_myself.Data.TargetPosition) <= 1f)
+            if (Vector3.Distance(m_myself.transform.position, m_myself.Data.TargetPosition) <= 0.1f)
             {
                 Debug.Log("Target reached");
                 m_myself.transform.position = m_myself.Data.TargetPosition;
                 return NodeResult.success;
             }
+
+            if (m_myself.Data.TargetEnemy != null) m_myself.Attack(m_myself.Data.TargetEnemy);
+            
 
             return NodeResult.running;
 
