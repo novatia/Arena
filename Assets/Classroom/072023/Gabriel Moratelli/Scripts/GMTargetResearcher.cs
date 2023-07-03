@@ -33,29 +33,38 @@ namespace MBTExample
 
             foreach (GameObject player in otherPlayers)
             {
-                m_MyPlayer.OthersPlayerList.Add(player);
+                if(player.name != m_MyPlayer.gameObject.name)
+                    m_MyPlayer.OthersPlayerList.Add(player);
             }
         }
 
         /// <summary>
         /// search in the list of player which is the nearest
+        /// return true if a new target is acquired, and false if there is already a target
         /// </summary>
         /// <returns></returns>
         private bool FindActualTarget()
         {
-            float actualMinorDistance = 1000f;
-            bool founded = false;
-            foreach(GameObject player in m_MyPlayer.OthersPlayerList)
+            if(m_MyPlayer.ActualTarget == null)
             {
-                float distance = Vector3.Distance(m_MyPlayer.transform.position, player.transform.position);
-                if(distance < actualMinorDistance)
+                float actualMinorDistance = 1000f;
+                bool founded = false;
+                foreach (GameObject player in m_MyPlayer.OthersPlayerList)
                 {
-                    actualMinorDistance = distance;
-                    m_MyPlayer.ActualTarget = player;
-                    founded = true;
+                    float distance = Vector3.Distance(m_MyPlayer.transform.position, player.transform.position);
+                    if (distance < actualMinorDistance)
+                    {
+                        actualMinorDistance = distance;
+                        m_MyPlayer.ActualTarget = player;
+                        founded = true;
+                    }
                 }
+                return founded;
             }
-            return founded;
+            else
+            {
+                return false;
+            }
         }
     }
 }

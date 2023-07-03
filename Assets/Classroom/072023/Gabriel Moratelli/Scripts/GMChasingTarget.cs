@@ -16,7 +16,6 @@ namespace MBTExample
 
         public override NodeResult Execute()
         {
-            
             if(!CheckDistanceFromTarget())
                 return NodeResult.running;
             else
@@ -29,14 +28,15 @@ namespace MBTExample
             bool isNear;
             if (distance > 1)
             {
-                m_MyPlayer.MoveTo(m_MyPlayer.ActualTarget.transform.position);
-                isNear = false;
-                return isNear;
+                m_MyPlayer.Destination(m_MyPlayer.ActualTarget.transform.position);
+                m_MyPlayer.IsTargetNear = false;
+                return m_MyPlayer.IsTargetNear;
             }
             else
             {
-                isNear = true;
-                return isNear;
+                m_MyPlayer.Destination(m_MyPlayer.transform.position);
+                m_MyPlayer.IsTargetNear = true;
+                return m_MyPlayer.IsTargetNear;
             }
         }
     }
