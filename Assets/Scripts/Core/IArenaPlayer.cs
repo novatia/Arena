@@ -1,10 +1,14 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
+
+[ExecuteInEditMode]
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
 [RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(TextMesh))]
 public class IArenaPlayer : MonoBehaviour, IArenaInterface
 {
     private Rigidbody m_Rigidbody;
@@ -12,7 +16,7 @@ public class IArenaPlayer : MonoBehaviour, IArenaInterface
     private NavMeshAgent m_NavMeshAgent;
 
     [Range(1,100)]
-    public int MaxHealth;
+    public int MaxHealth=100;
     private int m_CurrentHealth;
 
     private bool m_Blocking;
@@ -34,17 +38,25 @@ public class IArenaPlayer : MonoBehaviour, IArenaInterface
 
     private bool m_IsDead = false;
 
-    void Awake()
+    public Transform HealthBar;
+    public Transform PlayerName;
+    private TMP_Text m_TextMesh;
+
+
+    protected void Awake()
     {
         m_CurrentHealth = MaxHealth;
 
         m_Rigidbody = GetComponent<Rigidbody>();
         m_CapsuleCollider = GetComponent<CapsuleCollider>();
         m_NavMeshAgent = GetComponent<NavMeshAgent>();
+        m_TextMesh = PlayerName.GetComponent<TMP_Text>();
+
+        SetName("Fool");
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
         //Dead..
         if (m_IsDead)
@@ -61,6 +73,15 @@ public class IArenaPlayer : MonoBehaviour, IArenaInterface
             }
         }
 
+        UpdateHealthbarRotation();
+        UpdatePlayerName();
+    }
+
+    private void UpdateHealthbar() 
+    {
+        Vector3 local_scale = HealthBar.localScale;
+        local_scale.x = local_scale.x * m_CurrentHealth / MaxHealth;
+        HealthBar.localScale = local_scale;
     }
 
     /// <summary>
@@ -78,12 +99,26 @@ public class IArenaPlayer : MonoBehaviour, IArenaInterface
                 m_CurrentHealth -= Mathf.RoundToInt(AttackDamage / 2.0f);
             else
                 m_CurrentHealth -= Mathf.RoundToInt(AttackDamage);
-        }
 
+        }
+        
         if (m_CurrentHealth <= 0)
         {
             Dead();
+            m_CurrentHealth = 0;
         }
+
+        UpdateHealthbar();
+    }
+
+    private void UpdateHealthbarRotation()
+    {
+        HealthBar.transform.LookAt(Camera.main.transform);
+    }
+
+    private void UpdatePlayerName()
+    {
+        PlayerName.transform.LookAt(Camera.main.transform);
     }
 
     private void Dead()
@@ -96,10 +131,11 @@ public class IArenaPlayer : MonoBehaviour, IArenaInterface
     {
         if (!m_IsAttacking)
             m_Blocking = true;
+
         return m_Blocking;
     }
 
-    public bool UnBlock()
+    public bool Unblock()
     {
         if (!m_IsAttacking)
             m_Blocking = false;
@@ -110,9 +146,15 @@ public class IArenaPlayer : MonoBehaviour, IArenaInterface
     {
         if (!m_IsAttacking)
         {
-            m_IsAttacking = true;
-            target.TakeDamage(target);
-            return true;
+            Vector3 directionToTarget = transform.position - target.GetTransform().position;
+            float angle = Vector3.Angle(transform.forward, directionToTarget);
+
+            if (Mathf.Abs(angle) < 90)
+            {
+                m_IsAttacking = true;
+                target.TakeDamage(target);
+                return true;
+            }
         }
 
         return false;
@@ -133,5 +175,18 @@ public class IArenaPlayer : MonoBehaviour, IArenaInterface
     Transform IArenaInterface.GetTransform()
     {
         return transform;
+    }
+
+    public void SetName(string name)
+    {
+        if (m_TextMesh != null)
+            m_TextMesh.text = name;
+        else
+            Debug.LogError("TextMesh Pro Component is null");
+    }
+
+    public bool Destination(Vector3 world_position)
+    {
+        return m_NavMeshAgent.SetDestination(world_position);
     }
 }
