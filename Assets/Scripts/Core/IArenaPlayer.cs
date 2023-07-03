@@ -21,6 +21,8 @@ public class IArenaPlayer : MonoBehaviour, IArenaInterface
 
     private bool m_Blocking;
 
+    public int Health => m_CurrentHealth;
+
     [Range(0.1f,1f)]
     public float AttackDistance = 1.0f;
 
@@ -146,13 +148,19 @@ public class IArenaPlayer : MonoBehaviour, IArenaInterface
     {
         if (!m_IsAttacking)
         {
-            Vector3 directionToTarget = transform.position - target.GetTransform().position;
-            float angle = Vector3.Angle(transform.forward, directionToTarget);
+            float distance = (target.GetTransform().position - transform.position).magnitude;
 
-            if (Mathf.Abs(angle) < 90)
+            if (distance > AttackDistance)
+                return false;
+
+            Vector3 directionToTarget = transform.position - target.GetTransform().position;
+            //float angle = Vector3.Angle(transform.forward, directionToTarget);
+
+           // if (Mathf.Abs(angle) <= 100)
             {
                 m_IsAttacking = true;
                 target.TakeDamage(target);
+
                 return true;
             }
         }
