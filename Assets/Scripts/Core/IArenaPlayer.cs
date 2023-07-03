@@ -38,7 +38,6 @@ public class IArenaPlayer : MonoBehaviour, IArenaInterface
 
     private bool m_IsDead = false;
 
-
     public Transform HealthBar;
     public Transform PlayerName;
     private TMP_Text m_TextMesh;
@@ -52,6 +51,7 @@ public class IArenaPlayer : MonoBehaviour, IArenaInterface
         m_CapsuleCollider = GetComponent<CapsuleCollider>();
         m_NavMeshAgent = GetComponent<NavMeshAgent>();
         m_TextMesh = PlayerName.GetComponent<TMP_Text>();
+
         SetName("Fool");
     }
 
@@ -179,6 +179,9 @@ public class IArenaPlayer : MonoBehaviour, IArenaInterface
 
     public void SetName(string name)
     {
-        m_TextMesh.text = name;
+        if (m_TextMesh != null)
+            m_TextMesh.text = name;
+        else
+            Debug.LogError("TextMesh Pro Component is null");
     }
 }
