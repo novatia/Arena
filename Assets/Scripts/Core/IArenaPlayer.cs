@@ -65,4 +65,9 @@ public class IArenaPlayer : MonoBehaviour,IArenaInterface
     {
         return transform;
     }
+
+    public bool Jump()
+    {
+        throw new System.NotImplementedException();
+    }
 }
