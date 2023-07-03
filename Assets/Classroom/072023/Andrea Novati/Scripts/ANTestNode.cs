@@ -11,6 +11,7 @@ namespace MBTExample
         {
             public override NodeResult Execute()
             {
+                Debug.Log("hey");
                 return NodeResult.running;
             }
         }
