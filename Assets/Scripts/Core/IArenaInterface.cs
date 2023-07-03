@@ -44,4 +44,12 @@ public interface IArenaInterface
     /// </summary>
     /// <returns></returns>
     public void TakeDamage(IArenaInterface target);
+
+
+    /// <summary>
+    /// DO NOT OVERRIDE
+    /// Set the player name
+    /// </summary>
+    /// <param name="name"></param>
+    public void SetName(string name);
 }
