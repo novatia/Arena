@@ -10,13 +10,16 @@ namespace MBTExample
         public class ANGetTargetNode : Leaf
         {
 
-            IArenaPlayer m_Player =null;
-
+            ANPlayer m_Player = null;
             public override NodeResult Execute()
             {
 
                 if (m_Player == null)
-                    m_Player = GetComponentInParent<IArenaPlayer>();
+                    m_Player = GetComponentInParent<ANPlayer>();
+                if (m_Player.Target != null)
+                    if (!m_Player.TargetIsDead())
+                        return NodeResult.success;
+
 
                 GameObject[] targets = GameObject.FindGameObjectsWithTag("Target");
 
@@ -28,6 +31,7 @@ namespace MBTExample
                 float distance = GetDistance(nearest);
                 foreach (GameObject target in targets)
                 {
+
                     if (GetDistance(nearest) < distance)
                     {
                         distance = GetDistance(nearest);
@@ -35,8 +39,15 @@ namespace MBTExample
                     }
                 }
 
+                if (nearest != null)
+                {
+                    
+                    m_Player.SetTarget(nearest);
+                    return NodeResult.success;
+                }
 
-                return NodeResult.success;
+
+                return NodeResult.failure;
             }
 
             float GetDistance(GameObject target)
