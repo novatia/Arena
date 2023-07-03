@@ -14,7 +14,7 @@ PrefabInstance:
     - target: {fileID: 1826372437, guid: ac2513d55cf1ed847a0d9704075e8f36, type: 3}
       propertyPath: children.Array.data[0]
       value: 
-      objectReference: {fileID: 1043357612582287830}
+      objectReference: {fileID: 4133147892700420240}
     - target: {fileID: 888901349332384377, guid: ac2513d55cf1ed847a0d9704075e8f36, type: 3}
       propertyPath: children.Array.size
       value: 0
@@ -22,7 +22,7 @@ PrefabInstance:
     - target: {fileID: 952600992431522182, guid: ac2513d55cf1ed847a0d9704075e8f36, type: 3}
       propertyPath: selectedEditorNode
       value: 
-      objectReference: {fileID: 1043357612582287830}
+      objectReference: {fileID: 0}
     - target: {fileID: 4221824368876698450, guid: ac2513d55cf1ed847a0d9704075e8f36, type: 3}
       propertyPath: children.Array.size
       value: 0
@@ -94,13 +94,60 @@ PrefabInstance:
     - {fileID: 1826372436, guid: ac2513d55cf1ed847a0d9704075e8f36, type: 3}
     - {fileID: 8866150957432743948, guid: ac2513d55cf1ed847a0d9704075e8f36, type: 3}
     - {fileID: 4742803498475512152, guid: ac2513d55cf1ed847a0d9704075e8f36, type: 3}
+    - {fileID: 4963313334750151239, guid: ac2513d55cf1ed847a0d9704075e8f36, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ac2513d55cf1ed847a0d9704075e8f36, type: 3}
+--- !u!1 &2533199629350554662 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4963313334750151234, guid: ac2513d55cf1ed847a0d9704075e8f36, type: 3}
+  m_PrefabInstance: {fileID: 7477805562934677092}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7748638110327055988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2533199629350554662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9780a2454a45cf40b95dc586d308b69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 0
+  AttackDistance: 1
+  JumpSpeed: 0
+  AttackDamage: 10
+  AttackCooldown: 0.5
 --- !u!1 &6372762191996407131 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4590885428828373823, guid: ac2513d55cf1ed847a0d9704075e8f36, type: 3}
   m_PrefabInstance: {fileID: 7477805562934677092}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1043357612582287830
+--- !u!114 &3318084758184771735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6372762191996407131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27ea67f289c7b5c46a721d1f9373fc93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Get target
+  rect:
+    serializedVersion: 2
+    x: 20
+    y: 320
+    width: 160
+    height: 45
+  parent: {fileID: 4133147892700420240}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+--- !u!114 &7548230379516910434
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,18 +159,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 628815297330765479ca601985d7a020, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Test Node
+  title: Move to target
   rect:
     serializedVersion: 2
-    x: 151
-    y: 253
+    x: 240
+    y: 320
     width: 160
     height: 45
-  parent: {fileID: 7477805562478294321}
+  parent: {fileID: 4133147892700420240}
   children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
+--- !u!114 &4133147892700420240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6372762191996407131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Sequence
+  rect:
+    serializedVersion: 2
+    x: 140
+    y: 200
+    width: 160
+    height: 45
+  parent: {fileID: 7477805562478294321}
+  children:
+  - {fileID: 3318084758184771735}
+  - {fileID: 7548230379516910434}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
 --- !u!114 &7477805562478294321 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1826372437, guid: ac2513d55cf1ed847a0d9704075e8f36, type: 3}
