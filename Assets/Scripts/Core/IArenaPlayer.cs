@@ -135,7 +135,7 @@ public class IArenaPlayer : MonoBehaviour, IArenaInterface
         return m_Blocking;
     }
 
-    public bool UnBlock()
+    public bool Unblock()
     {
         if (!m_IsAttacking)
             m_Blocking = false;
