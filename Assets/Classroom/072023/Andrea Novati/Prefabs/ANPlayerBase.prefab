@@ -11,12 +11,10 @@ GameObject:
   - component: {fileID: 2894385637918695185}
   - component: {fileID: 952600992431522182}
   - component: {fileID: 8616019050871391983}
-  - component: {fileID: 1826372436}
   - component: {fileID: 1826372437}
   - component: {fileID: 888901349332384377}
   - component: {fileID: 4221824368876698450}
   - component: {fileID: 4742803498475512152}
-  - component: {fileID: 7213658316557336038}
   - component: {fileID: 8866150957432743948}
   m_Layer: 8
   m_Name: BTree
@@ -52,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 1826372436}
+  selectedEditorNode: {fileID: 4742803498475512152}
   repeatOnFinish: 0
   maxExecutionsPerTick: 1000
   parent: {fileID: 0}
@@ -69,30 +67,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monoBehaviourTree: {fileID: 952600992431522182}
---- !u!114 &1826372436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4590885428828373823}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0b2aca448a96d74a93795d2853019df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Test
-  rect:
-    serializedVersion: 2
-    x: 100
-    y: 540
-    width: 160
-    height: 45
-  parent: {fileID: 7213658316557336038}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
 --- !u!114 &1826372437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,7 +107,7 @@ MonoBehaviour:
   title: Sequence
   rect:
     serializedVersion: 2
-    x: 140
+    x: 120
     y: 180
     width: 160
     height: 45
@@ -160,13 +134,12 @@ MonoBehaviour:
   title: Selector
   rect:
     serializedVersion: 2
-    x: 100
-    y: 300
+    x: -60
+    y: 360
     width: 160
     height: 45
   parent: {fileID: 888901349332384377}
-  children:
-  - {fileID: 7213658316557336038}
+  children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
@@ -186,39 +159,13 @@ MonoBehaviour:
   title: Selector
   rect:
     serializedVersion: 2
-    x: 278
-    y: 312
+    x: 314
+    y: 325
     width: 160
     height: 45
   parent: {fileID: 888901349332384377}
   children:
   - {fileID: 8866150957432743948}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  random: 0
---- !u!114 &7213658316557336038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4590885428828373823}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08540605df275034fafc8e05c6704214, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Selector
-  rect:
-    serializedVersion: 2
-    x: 120
-    y: 383
-    width: 160
-    height: 45
-  parent: {fileID: 4221824368876698450}
-  children:
-  - {fileID: 1826372436}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
@@ -238,8 +185,8 @@ MonoBehaviour:
   title: Selector
   rect:
     serializedVersion: 2
-    x: 321
-    y: 387
+    x: 340
+    y: 480
     width: 160
     height: 45
   parent: {fileID: 4742803498475512152}
@@ -314,7 +261,7 @@ PrefabInstance:
     - target: {fileID: 2405402928088581859, guid: 291d5a78e37040f42b7cdbe2b8ffc3a3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 2100000, guid: 57c2e788c09844e4d94766d5b503c236, type: 2}
     - target: {fileID: 2405402928088581869, guid: 291d5a78e37040f42b7cdbe2b8ffc3a3, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -329,23 +276,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6864300910042895143, guid: 291d5a78e37040f42b7cdbe2b8ffc3a3, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6864300910042895143, guid: 291d5a78e37040f42b7cdbe2b8ffc3a3, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.08765899
+      value: 0.9166581
       objectReference: {fileID: 0}
     - target: {fileID: 6864300910042895143, guid: 291d5a78e37040f42b7cdbe2b8ffc3a3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.026708672
+      value: -0.013599943
       objectReference: {fileID: 0}
     - target: {fileID: 6864300910042895143, guid: 291d5a78e37040f42b7cdbe2b8ffc3a3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.9525582
+      value: 0.39939687
       objectReference: {fileID: 0}
     - target: {fileID: 6864300910042895143, guid: 291d5a78e37040f42b7cdbe2b8ffc3a3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.2902334
+      value: 0.005925628
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014554915667686782, guid: 291d5a78e37040f42b7cdbe2b8ffc3a3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.91666704
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014554915667686782, guid: 291d5a78e37040f42b7cdbe2b8ffc3a3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.012983965
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014554915667686782, guid: 291d5a78e37040f42b7cdbe2b8ffc3a3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.3994008
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014554915667686782, guid: 291d5a78e37040f42b7cdbe2b8ffc3a3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.00565724
       objectReference: {fileID: 0}
     - target: {fileID: 9178820116063035891, guid: 291d5a78e37040f42b7cdbe2b8ffc3a3, type: 3}
       propertyPath: m_AnchorMax.x
@@ -362,3 +325,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2405402926742334169, guid: 291d5a78e37040f42b7cdbe2b8ffc3a3, type: 3}
   m_PrefabInstance: {fileID: 7314002036307486873}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4963313334750151234 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2405402926742334171, guid: 291d5a78e37040f42b7cdbe2b8ffc3a3, type: 3}
+  m_PrefabInstance: {fileID: 7314002036307486873}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8067068099852129794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4963313334750151234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eea8e1014c0ee7844a90356b0968ded6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

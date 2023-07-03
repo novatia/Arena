@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,6 +8,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
 [RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(TextMesh))]
 public class IArenaPlayer : MonoBehaviour, IArenaInterface
 {
     private Rigidbody m_Rigidbody;
@@ -38,19 +40,23 @@ public class IArenaPlayer : MonoBehaviour, IArenaInterface
 
 
     public Transform HealthBar;
+    public Transform PlayerName;
+    private TMP_Text m_TextMesh;
 
 
-    void Awake()
+    protected void Awake()
     {
         m_CurrentHealth = MaxHealth;
 
         m_Rigidbody = GetComponent<Rigidbody>();
         m_CapsuleCollider = GetComponent<CapsuleCollider>();
         m_NavMeshAgent = GetComponent<NavMeshAgent>();
+        m_TextMesh = PlayerName.GetComponent<TMP_Text>();
+        SetName("Fool");
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
         //Dead..
         if (m_IsDead)
@@ -68,6 +74,7 @@ public class IArenaPlayer : MonoBehaviour, IArenaInterface
         }
 
         UpdateHealthbarRotation();
+        UpdatePlayerName();
     }
 
     private void UpdateHealthbar() 
@@ -109,6 +116,11 @@ public class IArenaPlayer : MonoBehaviour, IArenaInterface
         HealthBar.transform.LookAt(Camera.main.transform);
     }
 
+    private void UpdatePlayerName()
+    {
+        PlayerName.transform.LookAt(Camera.main.transform);
+    }
+
     private void Dead()
     {
         m_IsDead = true;
@@ -123,7 +135,7 @@ public class IArenaPlayer : MonoBehaviour, IArenaInterface
         return m_Blocking;
     }
 
-    public bool UnBlock()
+    public bool Unblock()
     {
         if (!m_IsAttacking)
             m_Blocking = false;
@@ -163,5 +175,10 @@ public class IArenaPlayer : MonoBehaviour, IArenaInterface
     Transform IArenaInterface.GetTransform()
     {
         return transform;
+    }
+
+    public void SetName(string name)
+    {
+        m_TextMesh.text = name;
     }
 }
