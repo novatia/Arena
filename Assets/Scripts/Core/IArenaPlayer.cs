@@ -184,4 +184,9 @@ public class IArenaPlayer : MonoBehaviour, IArenaInterface
         else
             Debug.LogError("TextMesh Pro Component is null");
     }
+
+    public bool Destination(Vector3 world_position)
+    {
+        return m_NavMeshAgent.SetDestination(world_position);
+    }
 }
