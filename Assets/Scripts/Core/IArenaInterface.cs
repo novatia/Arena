@@ -34,6 +34,13 @@ public interface IArenaInterface
     public bool MoveTo(Vector3 offset);
 
     /// <summary>
+    /// Wrapper to NavMesh Agent Destination
+    /// </summary>
+    /// <param name="world_position"></param>
+    /// <returns></returns>
+    public bool Destination(Vector3 world_position);
+
+    /// <summary>
     /// DO NOT OVERRIDE
     /// Jump.
     /// </summary>

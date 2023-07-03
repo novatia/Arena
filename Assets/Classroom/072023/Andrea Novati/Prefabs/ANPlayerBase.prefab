@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 888901349332384377}
   - component: {fileID: 4221824368876698450}
   - component: {fileID: 4742803498475512152}
-  - component: {fileID: 8866150957432743948}
+  - component: {fileID: 2927632318365735195}
   m_Layer: 8
   m_Name: BTree
   m_TagString: Untagged
@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 4742803498475512152}
+  selectedEditorNode: {fileID: 0}
   repeatOnFinish: 0
   maxExecutionsPerTick: 1000
   parent: {fileID: 0}
@@ -134,12 +134,13 @@ MonoBehaviour:
   title: Selector
   rect:
     serializedVersion: 2
-    x: -60
-    y: 360
+    x: -40
+    y: 300
     width: 160
     height: 45
   parent: {fileID: 888901349332384377}
-  children: []
+  children:
+  - {fileID: 2927632318365735195}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
@@ -159,18 +160,17 @@ MonoBehaviour:
   title: Selector
   rect:
     serializedVersion: 2
-    x: 314
-    y: 325
+    x: 260
+    y: 300
     width: 160
     height: 45
   parent: {fileID: 888901349332384377}
-  children:
-  - {fileID: 8866150957432743948}
+  children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
   random: 0
---- !u!114 &8866150957432743948
+--- !u!114 &2927632318365735195
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -179,22 +179,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 4590885428828373823}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08540605df275034fafc8e05c6704214, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d7a1c9e83ed1de4dbe29150c844c8f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Selector
+  title: Get Target
   rect:
     serializedVersion: 2
-    x: 340
-    y: 480
+    x: -40
+    y: 400
     width: 160
     height: 45
-  parent: {fileID: 4742803498475512152}
+  parent: {fileID: 4221824368876698450}
   children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
-  random: 0
 --- !u!1001 &7314002036307486873
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -330,7 +329,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2405402926742334171, guid: 291d5a78e37040f42b7cdbe2b8ffc3a3, type: 3}
   m_PrefabInstance: {fileID: 7314002036307486873}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8067068099852129794
+--- !u!114 &4431371343767604208
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
