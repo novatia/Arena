@@ -16,7 +16,7 @@ public class AJChaseEnemy : Leaf
 
     public void ChaseEnemy()
     {
-        m_Player.MoveTo(m_Player.Enemy.transform.position - transform.position);
+        m_Player.Destination(m_Player.Enemy.transform.position);
     }
 
     public override NodeResult Execute()
