@@ -149,8 +149,10 @@ namespace MBT
         public static readonly NodeResult running = new NodeResult(Status.Running);
     }
 
-    public interface IChildrenNode{
+    public interface IChildrenNode
+    {
         // void SetParent(Node node);
+        NodeResult Execute();
     }
 
     public interface IParentNode{

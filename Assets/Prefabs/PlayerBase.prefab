@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2405402926742334169}
   - component: {fileID: 2405402926742334168}
   - component: {fileID: 2405402926742334175}
-  - component: {fileID: 2405402926742334174}
+  - component: {fileID: 1072882517950070804}
   - component: {fileID: 2405402926742334172}
   - component: {fileID: 6652919215666711440}
   - component: {fileID: 7706663219579195585}
@@ -70,7 +70,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 1
---- !u!114 &2405402926742334174
+--- !u!114 &1072882517950070804
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -79,7 +79,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2405402926742334171}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59ad2574a42fb8b468b261bdc183495c, type: 3}
+  m_Script: {fileID: 11500000, guid: 940453101d495f54bb3ccdeae99d2e3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 100
@@ -87,8 +87,9 @@ MonoBehaviour:
   JumpSpeed: 0
   AttackDamage: 10
   AttackCooldown: 0.5
-  HealthBar: {fileID: 6864300910042895143}
-  PlayerName: {fileID: 9014554915667686782}
+  HealthBar: {fileID: 0}
+  PlayerName: {fileID: 0}
+  Enemies: []
 --- !u!195 &2405402926742334172
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -283,7 +284,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5855469544457517423}
-  m_LocalRotation: {x: -0.012166639, y: 0.39763168, z: 0.005273143, w: 0.91744936}
+  m_LocalRotation: {x: -0.012358313, y: 0.39911634, z: 0.005380015, w: 0.9168012}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 3, y: 0.2, z: -1}
   m_ConstrainProportionsScale: 0
@@ -366,7 +367,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9038044914842740860}
-  m_LocalRotation: {x: -0.011615507, y: 0.3976348, z: 0.0050342777, w: 0.91745645}
+  m_LocalRotation: {x: -0.011798509, y: 0.39911953, z: 0.0051363125, w: 0.9168086}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: -1, y: 1, z: -1}
   m_ConstrainProportionsScale: 0
