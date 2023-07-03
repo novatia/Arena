@@ -4,7 +4,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
 [RequireComponent(typeof(NavMeshAgent))]
-public class IArenaPlayer : MonoBehaviour,IArenaInterface
+public class IArenaPlayer : MonoBehaviour, IArenaInterface
 {
 
     [Range(1,100)]
@@ -33,7 +33,6 @@ public class IArenaPlayer : MonoBehaviour,IArenaInterface
     {
         
     }
-
    
     void IArenaInterface.TakeDamage()
     {
@@ -43,31 +42,31 @@ public class IArenaPlayer : MonoBehaviour,IArenaInterface
             m_CurrentHealth -= Mathf.RoundToInt( AttackDamage );
     }
 
-    bool IArenaInterface.Block()
+    public bool Block()
     {
         return false;
     }
 
-    bool IArenaInterface.Attack(IArenaInterface target)
+    public bool Attack(IArenaInterface target)
     {
         
         return false;
     }
 
-    bool IArenaInterface.MoveTo(Vector3 offset)
+    public bool MoveTo(Vector3 offset)
     {
         m_NavMeshAgent.Move(offset);
 
         return true;
     }
 
-    public Transform GetTransform()
-    {
-        return transform;
-    }
-
     public bool Jump()
     {
-        throw new System.NotImplementedException();
+        return false;
+    }
+
+    Transform IArenaInterface.GetTransform()
+    {
+        return transform;
     }
 }
