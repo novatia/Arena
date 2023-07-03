@@ -18,7 +18,7 @@ public class AJAttack : Leaf
     {
         if (m_Player.Block())
         {
-            m_Player.UnBlock();
+            m_Player.Unblock();
         }
         m_Player.Attack(m_Player.Enemy.GetComponent<IArenaInterface>());
     }
